@@ -1,0 +1,1 @@
+If I had the time, I would add Image Asset Optimization
