@@ -64,19 +64,24 @@ const styles = StyleSheet.create ({
 })
 
 export default function Homepage(){
-    const [list, setList] = useState([])
-    const [userToDoInput, setUserToDoInput] = useState("")
-    const [userSearchInput, setUserSearchInput] = useState("")
+    const [list, setList] = useState([]);
+    const [userToDoInput, setUserToDoInput] = useState("");
+    const [userSearchInput, setUserSearchInput] = useState("");
     const [filteredTasks, setFilteredTasks] = useState([]);
 
     // Function to add a task
     function addToDo(text) {
-        setList((prev) => [...prev, text]);
+        const newTask = {
+          id: Date.now(), // or use any unique identifier logic
+          text,
+          isChecked: false,
+        };
+      
+        setList((prev) => [...prev, newTask]);
         setUserToDoInput("");
-    }
+      }
 
     function handleKeyPress(event) {
-        console.log("Event ",event);
         if (event.code === "Enter") {
           addToDo(userToDoInput);
         }
@@ -91,27 +96,28 @@ export default function Homepage(){
     function toggleCheckbox(task) {
         setList((prev) =>
         prev.map((item) =>
-            item.text === task ? { ...item, isChecked: !item.isChecked } : item
+            item.id === task.id ? { ...item, isChecked: !item.isChecked } : item
         )
         );
     }
 
     // Function to filter tasks based on search input
-    useEffect(() => {
+    useEffect(() => {console.log("LIST",list);
         const filtered = list.filter(
           (task) =>
-            task.text &&
-            (task.text.toLowerCase().includes(userSearchInput.toLowerCase()) ||
-              task.isChecked)
+            // Check if task is a string
+            (task.text.toLowerCase().includes(userSearchInput.toLowerCase()))
         );
         setFilteredTasks(filtered);
-        console.log(filteredTasks);
       }, [userSearchInput, list]);
+    
+      console.log("Filter", filteredTasks)
 
     return(
         <>
         <View style={styles.container}>
             <Text style={{...FONTS.h1_semiBold, paddingBottom: 15, color:COLORS.accent, fontSize:30}}> Your To-Do List:</Text>
+            
             {/* No recorded to-do tasks */}
             {(list.length==0) && <Text style={{...FONTS.h2_semiBold, color:COLORS.secondary, marginLeft:20}}>Please add a task you wish to complete below.</Text>}
             
@@ -123,14 +129,19 @@ export default function Homepage(){
                     placeholder="Search tasks..."
                     onChangeText={(text) => setUserSearchInput(text)}
                     value={userSearchInput}
-                     
                     />
+                    
                     <FlatList
                     style={{ flex: 1 }}
-                    data={list}
+                    data={(userSearchInput.length >= 1) ? filteredTasks : list}
                     renderItem={({ item }) => (
-                        <Card text={item} isChecked={item.isChecked} onDelete={deleteToDo} onToggle={toggleCheckbox}/>
-                    )}
+                        <Card
+                          text={item.text}
+                          isChecked={item.isChecked}
+                          onDelete={() => deleteToDo(item)}
+                          onToggle={() => toggleCheckbox(item)}
+                        />
+                      )}
                     keyExtractor={(item, index) => index.toString()}/>
                 </>
             }

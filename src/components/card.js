@@ -32,17 +32,16 @@ const styles = StyleSheet.create({
     },
     deleteButtonText: {
         ...FONTS.h2_semiBold,
-        color: COLORS.accent,
+        color: COLORS.shadow,
     },
 })
 
-export default function Card(props){
-    const [isChecked, setChecked] = useState(false);
+export default function Card({ text, isChecked, onDelete, onToggle }){
 
     return (
-    <Pressable style={styles.view} onPress={() => setChecked((prev) => !prev)}>
-        <CheckBox style={{ ...styles.checkbox, backgroundColor: isChecked ? COLORS.accent : COLORS.primary }}/>
-        <Text style={{ ...styles.text, textDecorationLine: isChecked ? "line-through" : "none", textDecorationColor:COLORS.accent }}>{props.text}</Text>
+    <Pressable style={styles.view}>
+        <CheckBox style={{ ...styles.checkbox, backgroundColor: isChecked ? COLORS.accent : COLORS.primary }} checked={isChecked} onChange={onToggle}/>
+        <Text style={{ ...styles.text, textDecorationLine: isChecked ? "line-through" : "none", textDecorationColor:COLORS.accent }}>{text}</Text>
         
         {/* Add delete button */}
         <Pressable style={styles.deleteButton} onPress={() => props.onDelete(props.text)}>
