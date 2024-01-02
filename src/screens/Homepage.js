@@ -75,6 +75,13 @@ export default function Homepage(){
         setUserToDoInput("");
     }
 
+    function handleKeyPress(event) {
+        console.log("Event ",event);
+        if (event.code === "Enter") {
+          addToDo(userToDoInput);
+        }
+      }
+
     // Function to delete a task
     function deleteToDo(task) {
         setList((prev) => prev.filter((item) => item !== task));
@@ -98,6 +105,7 @@ export default function Homepage(){
               task.isChecked)
         );
         setFilteredTasks(filtered);
+        console.log(filteredTasks);
       }, [userSearchInput, list]);
 
     return(
@@ -115,6 +123,7 @@ export default function Homepage(){
                     placeholder="Search tasks..."
                     onChangeText={(text) => setUserSearchInput(text)}
                     value={userSearchInput}
+                     
                     />
                     <FlatList
                     style={{ flex: 1 }}
@@ -128,7 +137,7 @@ export default function Homepage(){
             </View>
 
             <View style = {styles.textBoxWrapper}>
-                <TextInput style={styles.textInput} placeholder="New Task" onChangeText={text => setUserToDoInput(text)} value={userToDoInput}/>
+                <TextInput style={styles.textInput} placeholder="New Task" onChangeText={text => setUserToDoInput(text)} value={userToDoInput} onKeyPress={handleKeyPress}/>
                 <TouchableOpacity style={styles.button} disabled={userToDoInput==""} onPress={()=>addToDo(userToDoInput)}>
                     <Text style={{...FONTS.h1_semiBold, color: COLORS.shadow, fontSize: 30,}}>+</Text>
                 </TouchableOpacity>
