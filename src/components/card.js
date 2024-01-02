@@ -1,5 +1,6 @@
 import React from "react";
-import { View, Text, StyleSheet, CheckBox} from "react-native";
+import { View, Text, StyleSheet, Pressable} from "react-native";
+import { CheckBox } from 'react-native-web';
 import { SIZES, FONTS, COLORS, SHADOW } from "../constants";
 
 const styles = StyleSheet.create({
@@ -26,11 +27,24 @@ const styles = StyleSheet.create({
         marginRight: 15,
 
     },
+    deleteButton: {
+        marginLeft: 'auto', // Push the button to the right
+    },
+    deleteButtonText: {
+        ...FONTS.h2_semiBold,
+        color: COLORS.accent,
+    },
 })
 
 export default function Card(props){
-    return <View style={styles.view}>
+    return (
+    <Pressable style={styles.view}>
         <CheckBox style={styles.checkbox}/>
         <Text style={styles.text}>{props.text}</Text>
-    </View>
+        
+        {/* Add delete button */}
+        <Pressable style={styles.deleteButton} onPress={() => props.onDelete(props.text)}>
+            <Text style={styles.deleteButtonText}>Delete</Text>
+        </Pressable>
+    </Pressable>)
 }

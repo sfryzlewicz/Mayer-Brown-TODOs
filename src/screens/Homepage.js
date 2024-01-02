@@ -5,6 +5,7 @@ import { COLORS, SIZES, FONTS, SHADOW } from "../constants";
 
 const styles = StyleSheet.create ({
         container:{
+            //need to account for overflow
             paddingTop: Platform.OS === "android" ? StatusBar.currentHeight + 10 : 40,
             flex:1,
             backgroundColor: COLORS.primary,
@@ -45,24 +46,33 @@ const styles = StyleSheet.create ({
 export default function Homepage(){
     const [list, setList] = useState([])
     const [userInput, setUserInput] = useState("")
-    const list2 = []
 
-    function addToDo(text){
-        setList(prev=> {
-            return [...prev, text]
-        })
-        setUserInput("")
-    } 
+    // Function to add a task
+    function addToDo(text) {
+        setList((prev) => [...prev, text]);
+        setUserInput("");
+    }
+
+    // Function to delete a task
+    function deleteToDo(task) {
+        setList((prev) => prev.filter((item) => item !== task));
+    }
 
     return(
+        <>
         <View style={styles.container}>
             <Text style={{...FONTS.h1_semiBold, paddingBottom: 15, color:COLORS.accent, fontSize:30}}> Your To-Do List:</Text>
             {(list.length==0) && <Text style={{...FONTS.h2_semiBold, color:COLORS.secondary, marginLeft:20}}>Please add a task you wish to complete below.</Text>}
-            {(list.length>=1) && <FlatList style={{flex:1}}
-            data = {list}
-            renderItem = {({item}) => <Card text={item}/> }
-            keyExtractor={(item, index) => index.toString()}
-            />}
+            {(list.length>=1) && 
+                <FlatList
+                style={{ flex: 1 }}
+                data={list}
+                renderItem={({ item }) => (
+                    <Card text={item} onDelete={deleteToDo} />
+                )}
+                keyExtractor={(item, index) => index.toString()}/>
+            }
+            </View>
 
             <View style = {styles.textBoxWrapper}>
                 <TextInput style={styles.textInput} placeholder="New Task" onChangeText={text => setUserInput(text)} value={userInput}/>
@@ -70,6 +80,6 @@ export default function Homepage(){
                     <Text style={{...FONTS.h1_semiBold, color: COLORS.shadow, fontSize: 30,}}>+</Text>
                 </TouchableOpacity>
             </View>
-        </View>
+        </>
     )
 }
