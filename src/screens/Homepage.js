@@ -58,6 +58,15 @@ export default function Homepage(){
         setList((prev) => prev.filter((item) => item !== task));
     }
 
+    // Function to toggle checkbox
+    function toggleCheckbox(task) {
+        setList((prev) =>
+        prev.map((item) =>
+            item.text === task ? { ...item, isChecked: !item.isChecked } : item
+        )
+        );
+    }
+
     return(
         <>
         <View style={styles.container}>
@@ -68,7 +77,7 @@ export default function Homepage(){
                 style={{ flex: 1 }}
                 data={list}
                 renderItem={({ item }) => (
-                    <Card text={item} onDelete={deleteToDo} />
+                    <Card text={item} isChecked={item.isChecked} onDelete={deleteToDo} onToggle={toggleCheckbox}/>
                 )}
                 keyExtractor={(item, index) => index.toString()}/>
             }

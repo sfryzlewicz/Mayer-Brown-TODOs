@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { View, Text, StyleSheet, Pressable} from "react-native";
 import { CheckBox } from 'react-native-web';
 import { SIZES, FONTS, COLORS, SHADOW } from "../constants";
@@ -37,10 +37,12 @@ const styles = StyleSheet.create({
 })
 
 export default function Card(props){
+    const [isChecked, setChecked] = useState(false);
+
     return (
-    <Pressable style={styles.view}>
-        <CheckBox style={styles.checkbox}/>
-        <Text style={styles.text}>{props.text}</Text>
+    <Pressable style={styles.view} onPress={() => setChecked((prev) => !prev)}>
+        <CheckBox style={{ ...styles.checkbox, backgroundColor: isChecked ? COLORS.accent : COLORS.primary }}/>
+        <Text style={{ ...styles.text, textDecorationLine: isChecked ? "line-through" : "none", textDecorationColor:COLORS.accent }}>{props.text}</Text>
         
         {/* Add delete button */}
         <Pressable style={styles.deleteButton} onPress={() => props.onDelete(props.text)}>
