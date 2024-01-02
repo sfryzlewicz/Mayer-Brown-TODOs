@@ -57,12 +57,12 @@ export default function Homepage(){
     return(
         <View style={styles.container}>
             <Text style={{...FONTS.h1_semiBold, paddingBottom: 15, color:COLORS.accent, fontSize:30}}> Your To-Do List:</Text>
-            <Card text={"Walk the dog"}/>
-            <FlatList style={{flex:1}}
+            {(list.length==0) && <Text style={{...FONTS.h2_semiBold, color:COLORS.secondary, marginLeft:20}}>Please add a task you wish to complete below.</Text>}
+            {(list.length>=1) && <FlatList style={{flex:1}}
             data = {list}
             renderItem = {({item}) => <Card text={item}/> }
             keyExtractor={(item, index) => index.toString()}
-            />
+            />}
 
             <View style = {styles.textBoxWrapper}>
                 <TextInput style={styles.textInput} placeholder="New Task" onChangeText={text => setUserInput(text)} value={userInput}/>
