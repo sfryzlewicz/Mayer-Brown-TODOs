@@ -45,6 +45,7 @@ const styles = StyleSheet.create ({
 export default function Homepage(){
     return(
         <View style={styles.container}>
+            <Text style={{...FONTS.h1_semiBold, paddingBottom: 15, color:COLORS.accent, fontSize:30}}> Your To-Do List:</Text>
             <Card text={"Walk the dog"}/>
 
             <View style = {styles.textBoxWrapper}>
