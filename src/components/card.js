@@ -1,23 +1,20 @@
 import React from "react";
 import { View, Text, StyleSheet, CheckBox} from "react-native";
-import { SIZES, FONTS, COLORS } from "../constants";
+import { SIZES, FONTS, COLORS, SHADOW } from "../constants";
 
 const styles = StyleSheet.create({
     view:{
+        ...SHADOW,
         width:'100%',
         paddingVertical: 10,
         paddingHorizontal: SIZES.padding,
         borderRadius: SIZES.borederRadius,
-        elevation: 12,
-        shadowColor: COLORS.shadow,
-        shadowOffset: {width:2, height: 12},
-        shadowRadius: 12,
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: COLORS.secondary,
     },
     text: {
-        ...FONTS.h2_semiBold,
+        ...FONTS.h1_semiBold,
         color: COLORS.primary,
     },
     checkbox:{

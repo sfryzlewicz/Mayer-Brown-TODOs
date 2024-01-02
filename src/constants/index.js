@@ -1,16 +1,16 @@
 const COLORS = {
-    primary: "#2990A6",
-    secondary: "#E9E9E9",
-    shadow: "#0F3457",
-    accent: "#EA9134",
+    primary: "#2990A6", //blue
+    secondary: "#E9E9E9", //white
+    shadow: "#0F3457", //deep blue
+    accent: "#FDC55d", //orange
 }
 
 const SIZES = {
     padding: 19,
     borederRadius: 15,
     textBoxRadius: 25,
-    h1: 24,
-    h2: 20,
+    h1: 22,
+    h2: 16,
 }
 
 const FONTS = {
@@ -18,4 +18,11 @@ const FONTS = {
     h2_semiBold: {fontSize: SIZES.h2, fontFamily: "Montserrat_Semibold"}
 }
 
-export {COLORS, SIZES, FONTS}
+const SHADOW ={
+    elevation: 12,
+    shadowColor: COLORS.shadow,
+    shadowOffset: {width:2, height: 12},
+    shadowRadius: 12,
+}
+
+export {COLORS, SIZES, FONTS, SHADOW}
