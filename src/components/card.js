@@ -12,6 +12,7 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         backgroundColor: COLORS.secondary,
+        marginBottom:15,
     },
     text: {
         ...FONTS.h1_semiBold,
