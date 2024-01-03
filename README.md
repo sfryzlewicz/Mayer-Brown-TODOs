@@ -1,6 +1,6 @@
 # React Native To-Do List App
 
-A simple to-do list application built with React Native and Expo with the goal to use a minimal ammount of dependencies.
+A simple to-do list application built with React Native and Expo with the goal to use a minimal ammount of dependencies. This was built arround the requirements of a Mayer Brown interview assessment.
 
 ## Table of Contents
 
