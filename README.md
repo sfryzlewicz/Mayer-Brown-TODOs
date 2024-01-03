@@ -45,18 +45,22 @@ Follow these instructions to get the project up and running on your local machin
 ### Installation
 
 1. Clone the repository.
+   
    ```bash
    git clone https://github.com/sfryzlewicz/Mayer-Brown-TODOs
 
 2. Navigate to the project directory.
+   
    ```bash
    cd ./Mayer-Brown-TODOs
 
 3. Install dependencies.
+   
    ```bash
    npm install
 
 4. Install dependencies.
+   
    ```bash
    expo start
 
@@ -75,7 +79,7 @@ Follow these instructions to get the project up and running on your local machin
     - index.js
 - App.js
 
-###Configuration
+### Configuration
 
 No additional configuration is required. The project uses Expo for development, providing a streamlined setup.
 
