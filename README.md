@@ -25,17 +25,17 @@ This React Native To-Do List App allows users to add, delete, search, and check 
 
 ## Required Features
 
-[X] Add tasks with a simple user interface.
-[X] Delete tasks easily.
-[X] Search for tasks to find them quickly.
-[X] Check off completed tasks.
+-[X] Add tasks with a simple user interface.
+-[X] Delete tasks easily.
+-[X] Search for tasks to find them quickly.
+-[X] Check off completed tasks.
 
 ## Additional Features
 
-[X] Add tasks with a simple user interface.
-[X] Delete tasks easily.
-[X] Search for tasks to find them quickly.
-[X] Check off completed tasks.
+-[X] Add tasks with a simple user interface.
+-[X] Delete tasks easily.
+-[X] Search for tasks to find them quickly.
+-[X] Check off completed tasks.
 
 ## Getting Started
 
