@@ -13,10 +13,6 @@ A simple to-do list application built with React Native and Expo.
 - [Usage](#usage)
   - [Folder Structure](#folder-structure)
   - [Configuration](#configuration)
-- [Contributing](#contributing)
-- [Testing](#testing)
-- [Issues](#issues)
-- [License](#license)
 - [Acknowledgments](#acknowledgments)
 
 ## Introduction
@@ -51,6 +47,25 @@ Follow these instructions to get the project up and running on your local machin
 1. Clone the repository.
    ```bash
    git clone https://github.com/sfryzlewicz/Mayer-Brown-TODOs
+
+## Usage
+
+### Folder Structure
+
+- src/
+  - components/
+    - card.js
+    - index.js
+  - constants/
+    - index.js
+  - screens/
+    - Homepage.js
+    - index.js
+- App.js
+
+###Configuration
+
+No additional configuration is required. The project uses Expo for development, providing a streamlined setup.
 
 ## Acknowledgments
 
