@@ -33,6 +33,7 @@ This React Native To-Do List App allows users to add, delete, search, and check 
 - [ ] Database
 - [ ] Log-in feature
 - - [ ] Ability to bypass log-in if desired
+- [x] Alphabetical list display
 
 ## Getting Started
 
