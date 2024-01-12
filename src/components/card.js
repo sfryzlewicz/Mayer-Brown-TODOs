@@ -44,7 +44,7 @@ export default function Card({ text, isChecked, onDelete, onToggle }){
         <Text style={{ ...styles.text, textDecorationLine: isChecked ? "line-through" : "none", textDecorationColor:COLORS.accent }}>{text}</Text>
         
         {/* Add delete button */}
-        <Pressable style={styles.deleteButton} onPress={() => props.onDelete(props.text)}>
+        <Pressable style={styles.deleteButton} onPress={onDelete}>
             <Text style={styles.deleteButtonText}>Delete</Text>
         </Pressable>
     </Pressable>)

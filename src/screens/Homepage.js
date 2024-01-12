@@ -76,8 +76,10 @@ export default function Homepage(){
           text,
           isChecked: false,
         };
-      
-        setList((prev) => [...prev, newTask]);
+        
+        const sortedList = [...list, newTask].sort((a, b) => a.text.localeCompare(b.text));
+        console.log("Added List", sortedList);
+        setList(sortedList);
         setUserToDoInput("");
       }
 
